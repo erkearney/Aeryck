@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <div>
+	<h1 class="title">{{ post.title }}</h1>
+	<p>{{ post.body|markdown }}</p>
+	<br><p class="posted">Posted: {{ post.created.strftime('%Y, %B-%d') }} </p>
+    </div>
+    <div class ="nextprev">
+	{% if older %}
+	<a href="{{ url_for('show_post_by_id', post_id=g.id - 1) }}">Older</a>
+	{% endif %}
+	{% if newer %}
+	<a href="{{ url_for('show_post_by_id', post_id=g.id + 1) }}">Newer</a>
+	{% endif %}
+    </div>
+{% endblock %}

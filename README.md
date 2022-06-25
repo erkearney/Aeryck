@@ -1,2 +1,2 @@
-# Aeryck
-Code for my website: Aeryck.com
+# aeryck
+Code for aeryck.com
