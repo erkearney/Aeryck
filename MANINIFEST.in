@@ -1,0 +1,4 @@
+include aeryck/schema.sql
+graft aeryck/static
+graft aeryck/templates
+global-exclude *.pyc

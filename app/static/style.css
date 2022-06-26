@@ -28,6 +28,10 @@ a:hover {
     background-color: #161b29;
 }
 
+.nextprev a:hover {
+    background-color: #151924;
+}
+
 .title {
     color: #9DAAF2;
 }
@@ -53,6 +57,10 @@ a:hover {
     display: block;
     padding: 16px;
     background-color: #161b29;
+}
+
+.header a:hover {
+    background-color: #151924;
 }
 
 .header li {
