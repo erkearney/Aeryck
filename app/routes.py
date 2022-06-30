@@ -32,7 +32,7 @@ def blog():
     """
     db = database.get_database()
     posts = db.execute(
-        'SELECT * FROM post'
+        'SELECT * FROM post ORDER BY created DESC;'
     ).fetchall()
     return render_template('blog.html', posts=posts, title='Blog')
 

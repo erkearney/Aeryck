@@ -9,8 +9,13 @@ def get_filename():
                                             ' insert it into the database')
     parser.add_argument('FILENAME', help='Path to the markdown file to be'
                                         ' ingested')
+    parser.add_argument('-u', '--update', action='store_true',
+                        help='If enabled, update an existing post instead of '
+                        'creating a new one')
     args = parser.parse_args()
     filename = args.FILENAME
+    global UPDATE
+    UPDATE = args.update
 
     return filename
 
@@ -39,13 +44,16 @@ def ingest_file(filename) -> 'Tuple':
     for line in text:
         body += line
 
-    return (title, body)
+    return (body, title)
 
 
 def insert_into_db(database, post):
     cursor = database.cursor()
 
-    sql = ''' INSERT INTO post(title, body) VALUES(?,?) '''
+    if UPDATE:
+        sql = ''' UPDATE post SET body = (?) WHERE title = (?) '''
+    else:
+        sql = ''' INSERT INTO post(body, title) VALUES(?,?) '''
     cursor.execute(sql,post)
     database.commit()
 
