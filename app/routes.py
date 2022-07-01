@@ -13,14 +13,14 @@ def index():
     """
     db = database.get_database()
 
-    newest_post = db.execute(
+    welcome_post = db.execute(
         'SELECT p.id, created'
         ' FROM post p'
-        ' WHERE created = (SELECT MAX(created) FROM post)'
+        ' WHERE title = "Welcome"'
     ).fetchone()
-    session['post_id'] = newest_post['id']
+    session['post_id'] = welcome_post['id']
 
-    return show_post_by_id(str(newest_post['id']))
+    return show_post_by_id(str(welcome_post['id']))
 
 
 
