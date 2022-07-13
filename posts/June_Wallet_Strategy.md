@@ -42,7 +42,7 @@ Points earned: 1194; Value of 0.5 cents per point: $5.97; Percent back: 0.65%
 
 
 ##Conclusion
-My June strategy netted my 4.12% back, so I fell a little short of my 5% goal. One issue that immediately jumped out to me was the lack of Hilton points. I was supposed to get 3 points per dollar for spend on those cards and yet it appears I got closed to 1 point per dollar. I imagine there must be a long delay between transactions being made and the Hilton points being deposited into my account that caused some points to not show up until July. However even if all those points were accounted for my overall return would only be 4.33%, still short of my goal. That being said, I'm very confident the numbers for July will look VERY good, since I'm sure to hit the 100,000 point welcome bonus for my new Hilton Honors card.
+My June strategy netted me 4.12% back, so I fell a little short of my 5% goal. One issue that immediately jumped out to me was the lack of Hilton points. I was supposed to get 3 points per dollar for spend on those cards and yet it appears I got closed to 1 point per dollar. I imagine there must be a long delay between transactions being made and the Hilton points being deposited into my account that caused some points to not show up until July. However even if all those points were accounted for my overall return would only be 4.33%, still short of my goal. That being said, I'm very confident the numbers for July will look VERY good, since I'm sure to hit the 100,000 point welcome bonus for my new Hilton Honors card.
 
 Overall I'm pretty pleased with this result, we'll see if I can do even better next month!
 <pre>
