@@ -46,7 +46,6 @@ def show_post_by_id(post_id):
     does not exist.
     """
     db = database.get_database()
-    print(post_id)
     post = db.execute(
         'SELECT p.id, title, body, created'
         ' FROM post p'
@@ -67,7 +66,40 @@ def show_post_by_id(post_id):
         ' WHERE p.id = ?', (str(int(post_id) + 1)),
     ).fetchone()
 
+    newest = db.execute(
+        'SELECT MAX(p.id)'
+        ' FROM post p',
+    ).fetchone()
+
+    return render_template('index.html', post=post, title=title, older=older, newer=newer, newest=newest)
+
+
+@app.route('/newest', methods=['GET'])
+def show_newest_post():
+    db = database.get_database()
+    post = db.execute(
+        'SELECT p.id, title, body, created'
+        ' FROM post p'
+        ' WHERE p.id = (SELECT MAX(id) FROM post)',
+    ).fetchone()
+    g.id = post['id']
+    title = post['title']
+    post_id = post['id']
+
+    older = db.execute(
+        'SELECT p.id'
+        ' FROM post p'
+        ' WHERE p.id = ?', (str(int(post_id) - 1)),
+    ).fetchone()
+
+    newer = db.execute(
+        'SELECT p.id'
+        ' FROM post p'
+        ' WHERE p.id = ?', (str(int(post_id) + 1)),
+    ).fetchone()
+
     return render_template('index.html', post=post, title=title, older=older, newer=newer)
+
 
 
 @app.route('/resume')

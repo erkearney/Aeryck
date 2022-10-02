@@ -12,5 +12,8 @@
 	{% if newer %}
 	<a href="{{ url_for('show_post_by_id', post_id=g.id + 1) }}">Newer</a>
 	{% endif %}
+	{% if newest %}
+	<a href="{{ url_for('show_newest_post') }}">Newest</a>
+	{% endif %}
     </div>
 {% endblock %}
