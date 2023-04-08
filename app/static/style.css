@@ -20,6 +20,14 @@ a:hover {
     background-color: #151924;
 }
 
+code {
+    display: flex;
+    flex-direction: column;
+    color: #64B10A;
+    background-color: #1E2538;
+    padding: 20px;
+}
+
 .nextprev {
     bottom: 1rem;
 }
