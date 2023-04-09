@@ -11,15 +11,16 @@ mini-tutorial will be split into three key sections:
 
 
 All of the code in this tutorial can be found
-[here](https://github.com/erkearney/Aeryck).
+[here](https://github.com/erkearney/Aeryck/blob/main/code_posts/data_visualization/1part_matplotlib_examples.py).
 
 ## Basic plotting
 
 Let's start by generating some random numbers to plot:
 
-    import random
-    data = random.sample(range(100), 10)
-    print(data)
+<pre><code>import random
+data = random.sample(range(100), 10)
+print(data)
+</code></pre>
 
 #### Output: [93, 24, 37, 15, 59, 89, 31, 52, 2, 72]
 

@@ -19,6 +19,8 @@ ax1.plot(data1)
 ax2.plot(data2)
 plt.show()
 
+data1 = [81, 14, 61, 36, 83]
+data2 = [17, 40, 58, 56, 7]
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3)
 ax1.plot(data1)
 bar_labels = [0, 1, 2, 3, 4]
