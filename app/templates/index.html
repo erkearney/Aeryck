@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
     <div>
-	<h1 class="title">{{ post.title }}</h1>
-	<p>{{ post.body|markdown }}</p>
-	<br><p class="posted">Posted: {{ post.created.strftime('%Y, %B-%d') }} </p>
+	<h1 class="title">{{ title }}</h1>
+	{{ body|safe }}
+	<br><p class="posted">Posted: {{ date.strftime('%Y, %B-%d') }} </p>
     </div>
     <div class ="nextprev">
 	{% if older %}

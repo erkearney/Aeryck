@@ -4,7 +4,6 @@ to non-data scientists much more easily. In these next posts, we're going to
 learn how to effectively use matplotlib to further these skills. The matplotlib
 mini-tutorial will be split into three key sections:
 
-
 ### [Basic plotting](https://aeryck.com/post:5)
 ### Customization
 ### The Object-Oriented API
@@ -17,10 +16,9 @@ All of the code in this tutorial can be found
 
 Let's start by generating some random numbers to plot:
 
-<pre><code>import random
-data = random.sample(range(100), 10)
-print(data)
-</code></pre>
+    import random
+    data = random.sample(range(100), 10)
+    print(data)
 
 #### Output: [93, 24, 37, 15, 59, 89, 31, 52, 2, 72]
 
@@ -33,7 +31,7 @@ Now let's plot the data:
 
     plt.show()
 
-![matplotlib figure 1](/static/images/data_visualization_matplotlib_1.png
+![matplotlib figure 1](/static/images/data_visualization_matplotlib_1.png 
 "Figure 1: Random numbers plotted")
 
 ###### (Clearly, if you're following along with me, your plot will look different due to the numbers being randomly generated)
@@ -70,7 +68,8 @@ previously generated data:
 
     fig, (ax1, ax2, ax3) = plt.subplots(1, 3)
     ax1.plot(data1)
-    bar_labels = [0, 1, 2, 3, 4]
+    ax1.plot(data2)
+    bar_labels = ['1', '2', '3', '4', '5']
     ax2.bar(bar_labels, data1)
     ax3.scatter(data1, data2)
     plt.show()

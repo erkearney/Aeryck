@@ -3,6 +3,7 @@ Hook urls to html files in the templates directory.
 """
 from flask import render_template, url_for, request, session, g
 from app import app, database
+import markdown
 
 
 @app.route('/', methods=['GET'])
@@ -71,34 +72,25 @@ def show_post_by_id(post_id):
         ' FROM post p',
     ).fetchone()
 
-    return render_template('index.html', post=post, title=title, older=older, newer=newer, newest=newest)
+    md = markdown.Markdown(extenstions=['fenced_code'])
+    body = md.convert(post['body'])
+    title = post['title']
+    date = post['created']
+
+    return render_template('index.html', body=body, title=title, date=date, older=older, newer=newer, newest=newest)
 
 
 @app.route('/newest', methods=['GET'])
 def show_newest_post():
     db = database.get_database()
-    post = db.execute(
-        'SELECT p.id, title, body, created'
+    newest_post = db.execute(
+        'SELECT p.id, created'
         ' FROM post p'
         ' WHERE p.id = (SELECT MAX(id) FROM post)',
     ).fetchone()
-    g.id = post['id']
-    title = post['title']
-    post_id = post['id']
+    session['post_id'] = newest_post['id']
 
-    older = db.execute(
-        'SELECT p.id'
-        ' FROM post p'
-        ' WHERE p.id = ?', (str(int(post_id) - 1)),
-    ).fetchone()
-
-    newer = db.execute(
-        'SELECT p.id'
-        ' FROM post p'
-        ' WHERE p.id = ?', (str(int(post_id) + 1)),
-    ).fetchone()
-
-    return render_template('index.html', post=post, title=title, older=older, newer=newer)
+    return show_post_by_id(str(newest_post['id']))
 
 
 
