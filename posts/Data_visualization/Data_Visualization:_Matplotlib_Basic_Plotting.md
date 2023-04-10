@@ -5,8 +5,8 @@ learn how to effectively use matplotlib to further these skills. The matplotlib
 mini-tutorial will be split into three key sections:
 
 ### [Basic plotting](https://aeryck.com/post:5)
-### Customization
-### The Object-Oriented API
+### [Customization](https://aeryck.com/post:6)
+### [The matplotlib API](https://aeryck.com/post:7)
 
 
 All of the code in this tutorial can be found
