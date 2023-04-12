@@ -97,3 +97,8 @@ code {
     position: absolute; 
     padding: 12px;
 }
+
+iframe {
+    background-color: #FFFFFF;
+    color: #EFEFEF;
+}

@@ -1,4 +1,5 @@
 __init__.py
+not_my_data
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
