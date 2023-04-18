@@ -32,7 +32,8 @@ All the code from this post can be found
 ## matplotlib series:
 ### [Basic plotting](https://aeryck.com/post:5)
 ### [Customization](https://aeryck.com/post:6)
-### [The matplotlib API](https://aeryck.com/post:7)
+### [The matplotlib API (this post)](https://aeryck.com/post:7)
+### [Exercises](https://aeryck.com/post:8)
 
 We can add a little *pizzazz* to our plots by animating them, let's demonstrate
 by plotting the minimum wage in the states of California and Colorado over time

@@ -4,9 +4,10 @@ to non-data scientists much more easily. In these next posts, we're going to
 learn how to effectively use matplotlib to further these skills. The matplotlib
 mini-tutorial will be split into three key sections:
 
-### [Basic plotting](https://aeryck.com/post:5)
+### [Basic plotting (this post)](https://aeryck.com/post:5)
 ### [Customization](https://aeryck.com/post:6)
 ### [The matplotlib API](https://aeryck.com/post:7)
+### [Exercises](https://aeryck.com/post:8)
 
 
 All of the code in this tutorial can be found
@@ -31,7 +32,7 @@ Now let's plot the data:
 
     plt.show()
 
-![matplotlib figure 1](/static/images/data_visualization_matplotlib_1.png 
+![matplotlib figure 1](/static/images/data_visualization/basic_plotting/1.png 
 "Figure 1: Random numbers plotted")
 
 ###### (Clearly, if you're following along with me, your plot will look different due to the numbers being randomly generated)
@@ -57,7 +58,7 @@ container the plot is in. One Figure can contain multiple plots:
 
 #### Output: data1: [81, 14, 61, 36, 83], data2: [17, 40, 58, 56, 7]
 
-![matplotlib figure 2](/static/images/data_visualization_matplotlib_2.png
+![matplotlib figure 2](/static/images/data_visualization/basic_plotting/2.png
 "Figure 2: Two plots of random numbers")
 
 So we've created a single Figure to house two Axes (i.e. two separate plots)
@@ -74,7 +75,7 @@ previously generated data:
     ax3.scatter(data1, data2)
     plt.show()
 
-![matplotlib figure 3](/static/images/data_visualization_matplotlib_3.png
+![matplotlib figure 3](/static/images/data_visualization/basic_plotting/3.png
 "Figure 3: Different plots demonstrated.")
 
 We've just begun to scratch the surface of the types of plots that can be made

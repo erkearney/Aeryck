@@ -6,8 +6,9 @@ All the code from this post can be found
 [here](https://github.com/erkearney/Aeryck/blob/main/code_posts/data_visualization/2part_matplotlib_examples.py)
 
 ### [Basic plotting](https://aeryck.com/post:5)
-### [Customization](https://aeryck.com/post:6)
+### [Customization (this post)](https://aeryck.com/post:6)
 ### [The matplotlib API](https://aeryck.com/post:7)
+### [Exercises](https://aeryck.com/post:8)
 
 Let's start with a quick review of basic plotting, this time we'll compare
 annual headline consumer price inflation [source: World
