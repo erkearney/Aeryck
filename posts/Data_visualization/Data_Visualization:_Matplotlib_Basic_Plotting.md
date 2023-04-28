@@ -17,20 +17,24 @@ All of the code in this tutorial can be found
 
 Let's start by generating some random numbers to plot:
 
-    import random
-    data = random.sample(range(100), 10)
-    print(data)
+```python
+import random
+data = random.sample(range(100), 10)
+print(data)
+```
 
 #### Output: [93, 24, 37, 15, 59, 89, 31, 52, 2, 72]
 
 Now let's plot the data:
 
-    import matplotlib.pyplot as plt
+```python
+import matplotlib.pyplot as plt
 
-    fig, ax = plt.subplots()
-    ax.plot(data)
+fig, ax = plt.subplots()
+ax.plot(data)
 
-    plt.show()
+plt.show()
+```
 
 ![matplotlib figure 1](/static/images/data_visualization/basic_plotting/1.png 
 "Figure 1: Random numbers plotted")
@@ -48,13 +52,15 @@ object. The Axes contain everything you can see in the plot, both the x and y
 encapsulating everything that makes up the plot. The Figure is simply the
 container the plot is in. One Figure can contain multiple plots:
 
-    data1 = random.sample(range(100), 5)
-    data2 = random.sample(range(100), 5)
-    print(f'data1: {data1}, data2: {data2}')
-    fig, (ax1, ax2) = plt.subplots(1, 2)
-    ax1.plot(data1)
-    ax2.plot(data2)
-    plt.show()
+```python
+data1 = random.sample(range(100), 5)
+data2 = random.sample(range(100), 5)
+print(f'data1: {data1}, data2: {data2}')
+fig, (ax1, ax2) = plt.subplots(1, 2)
+ax1.plot(data1)
+ax2.plot(data2)
+plt.show()
+```
 
 #### Output: data1: [81, 14, 61, 36, 83], data2: [17, 40, 58, 56, 7]
 
@@ -67,13 +73,15 @@ It's important to note that while so far we've been creating line plots,
 matplotlib is capable of much more, let's demonstrate by re-plotting the
 previously generated data:
 
-    fig, (ax1, ax2, ax3) = plt.subplots(1, 3)
-    ax1.plot(data1)
-    ax1.plot(data2)
-    bar_labels = ['1', '2', '3', '4', '5']
-    ax2.bar(bar_labels, data1)
-    ax3.scatter(data1, data2)
-    plt.show()
+```python
+fig, (ax1, ax2, ax3) = plt.subplots(1, 3)
+ax1.plot(data1)
+ax1.plot(data2)
+bar_labels = ['1', '2', '3', '4', '5']
+ax2.bar(bar_labels, data1)
+ax3.scatter(data1, data2)
+plt.show()
+```
 
 ![matplotlib figure 3](/static/images/data_visualization/basic_plotting/3.png
 "Figure 3: Different plots demonstrated.")

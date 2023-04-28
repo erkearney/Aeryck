@@ -15,15 +15,17 @@ annual headline consumer price inflation [source: World
 Bank](https://www.worldbank.org/en/research/brief/inflation-database) from 2017
 to 2022 in the United States and Canada.
 
-    import matplotlib.pyplot as plt
+```python
+import matplotlib.pyplot as plt
 
-    united_states = [2.14, 2.44, 1.81, 1.23, 4.70]
-    canada = [1.60, 2.27, 1.95, 0.72, 3.40]
+united_states = [2.14, 2.44, 1.81, 1.23, 4.70]
+canada = [1.60, 2.27, 1.95, 0.72, 3.40]
 
-    fig, ax = plt.subplots()
-    ax.plot(united_states)
-    ax.plot(canada)
-    plt.show()
+fig, ax = plt.subplots()
+ax.plot(united_states)
+ax.plot(canada)
+plt.show()
+```
 
 ![United States vs Canada
 inflation](static/images/data_visualization/matplotlib/customization/1.png
@@ -36,15 +38,17 @@ labels, and a legend, making the plot completely meaningless on its own. Fortuna
 customization of plots is a core feature of matplotlib. Let's start by
 rectifying these issues.
 
-    ax.plot(united_states, label="United States")
-    ax.plot(canada, label="Canada")
+```python
+ax.plot(united_states, label="United States")
+ax.plot(canada, label="Canada")
 
-    ax.set_title('Inflation in The United States vs. Canada')
-    ax.set_xlabel('Year')
-    ax.set_ylabel('Percent')
-    ax.legend()
+ax.set_title('Inflation in The United States vs. Canada')
+ax.set_xlabel('Year')
+ax.set_ylabel('Percent')
+ax.legend()
 
-    plt.show()
+plt.show()
+```
 
 ![United States vs Canada
 inflation, with labels](static/images/data_visualization/matplotlib/customization/2.png
@@ -56,11 +60,13 @@ This is looking much better, there's one final step in converting this into a
 competent plot, and that's converting the numbers of the x-axis to show the
 appropriate year, instead of the default 0.0, 0.5, etc.
 
-    years = [2017, 2018, 2019, 2020, 2021]
-    ax.plot(years, united_states, label='United States')
-    ax.plot(years, canada, label='Canada')
-    ax.set_xticks(years)
-    ax.set_xticklabels(years)
+```python
+years = [2017, 2018, 2019, 2020, 2021]
+ax.plot(years, united_states, label='United States')
+ax.plot(years, canada, label='Canada')
+ax.set_xticks(years)
+ax.set_xticklabels(years)
+```
 
 ![United States vs Canada
 inflation, with years for x-axis](static/images/data_visualization/matplotlib/customization/3.png
@@ -84,8 +90,10 @@ the second to the y-values.\*
 We've seen how add basic supplemental information to a plot, now let's make this
 plot truly ours. We can start by changing the lines:
 
-    ax.plot(years, united_states, color='blue', linewidth=2, label='United States')
-    ax.plot(years, canada, color='red', linewidth=2, label='Canada')
+```python
+ax.plot(years, united_states, color='blue', linewidth=2, label='United States')
+ax.plot(years, canada, color='red', linewidth=2, label='Canada')
+```
 
 ![United States vs Canada
 inflation, lines edited](static/images/data_visualization/matplotlib/customization/4.png
@@ -96,34 +104,36 @@ calling plot(). In fact, not only can you change [just about
 anything](https://matplotlib.org/stable/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D)
 about these lines, the same is true for the entire plot!
 
-    # let's set some colorblind-friendly colors
-    US_COLOR = '#3182bd' # blue
-    CA_COLOR = '#de2d26' # red
+```python
+# let's set some colorblind-friendly colors
+US_COLOR = '#3182bd' # blue
+CA_COLOR = '#de2d26' # red
 
-    ax.plot(years, united_states, color=US_COLOR, linewidth=2, label='United States')
-    ax.plot(years, canada, color=CA_COLOR, linewidth=2, label='Canada')
+ax.plot(years, united_states, color=US_COLOR, linewidth=2, label='United States')
+ax.plot(years, canada, color=CA_COLOR, linewidth=2, label='Canada')
 
-    # get rid of some clutter
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
+# get rid of some clutter
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
 
-    # add some horizontal gridlines
-    ax.yaxis.grid(color='gray', linestyle='dashed')
+# add some horizontal gridlines
+ax.yaxis.grid(color='gray', linestyle='dashed')
 
-    ax.set_title('Inflation in the United States and Canada', weight='bold')
-    ax.set_xlabel('Year', weight='bold')
-    ax.set_ylabel('Percent', weight='bold')
+ax.set_title('Inflation in the United States and Canada', weight='bold')
+ax.set_xlabel('Year', weight='bold')
+ax.set_ylabel('Percent', weight='bold')
 
-    # add a subtitle
-    ax.text(0.5, 0.98, 'Average annual headline consumer price inflation (source: World Bank)', transform=ax.transAxes, ha='center', fontsize=8)
+# add a subtitle
+ax.text(0.5, 0.98, 'Average annual headline consumer price inflation (source: World Bank)', transform=ax.transAxes, ha='center', fontsize=8)
 
-    # adjust interval on x-axis
-    ax.set_xticks(years)
-    ax.set_xticklabels(years)
+# adjust interval on x-axis
+ax.set_xticks(years)
+ax.set_xticklabels(years)
 
-    ax.legend(loc='lower left')
+ax.legend(loc='lower left')
 
-    plt.show()
+plt.show()
+```
 
 ![United States vs Canada
 inflation, fully custom](static/images/data_visualization/matplotlib/customization/5.png
@@ -142,17 +152,19 @@ If your data are already labeled, say in a dict or a pandas dataframe, you can
 take advantage of the data parameter in the plot() method. This provides a
 more convenient way of inserting the labels into the plot:
 
-    import matplotlib.pyplot as plt
+```python
+import matplotlib.pyplot as plt
 
-    united_states = [2.14, 2.44, 1.81, 1.23, 4.70]
-    years = [2017, 2018, 2019, 2020, 2021]
+united_states = [2.14, 2.44, 1.81, 1.23, 4.70]
+years = [2017, 2018, 2019, 2020, 2021]
 
-    us_dict = {'Year': years, 'Percent': united_states}
+us_dict = {'Year': years, 'Percent': united_states}
 
-    fig, ax = plt.subplots()
-    ax.plot('Year', 'Percent', data=us_dict)
+fig, ax = plt.subplots()
+ax.plot('Year', 'Percent', data=us_dict)
 
-    plt.show()
+plt.show()
+```
 
 ![United States inflation](static/images/data_visualization/matplotlib/customization/bonus.png
 "Bonus figure: United States inflation, plotted using obj")
@@ -165,7 +177,9 @@ It's also worth mentioning that matplot lib contains a large number of
 to spend time tweaking all the details, you can try one of those! It's as simple
 as running
 
-    plt.style.use('classic')
+```python
+plt.style.use('classic')
+```
 
 Here are a couple interesting examples:
 

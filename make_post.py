@@ -44,14 +44,28 @@ def ingest_file(path) -> 'Tuple':
     text = read_post(path)
     body = ''
     code_block = ''
+    in_code_block = False
     for line in text:
-        if line.startswith(' ' * 4):
+        if line.startswith("```"):
+            in_code_block = not(in_code_block)
+            continue
+
+        if in_code_block:
+            code_block += line
+        elif code_block:
+            body += highlight(code_block, PythonLexer(), HtmlFormatter())
+            code_block = ''
+        else:
+            body += line
+
+            """
             code_block += line[4:]
         elif code_block:
             body += highlight(code_block, PythonLexer(), HtmlFormatter())
             code_block = ''
         else:
             body += line
+            """
 
     return (body, title)
 
