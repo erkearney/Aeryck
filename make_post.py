@@ -65,7 +65,7 @@ def ingest_file(path) -> 'Tuple':
             if language == "python":
                 body += highlight(code_block, PythonLexer(), HtmlFormatter())
             elif language == "R":
-                body += highlight(code_block, Slexer(), HtmlFormatter())
+                body += highlight(code_block, SLexer(), HtmlFormatter())
             elif language == 'SQL':
                 body += highlight(code_block, PostgresLexer(), HtmlFormatter())
             else:

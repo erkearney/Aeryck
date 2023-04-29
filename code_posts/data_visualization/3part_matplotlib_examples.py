@@ -118,8 +118,8 @@ states = dict(sorted(states.items(), key=lambda item: item[0], reverse=True))
 
 average_wages = []
 for year in years:
-   wages = np.average(np.array(df.loc[df['Year'] == year, 'State.Minimum.Wage']))
-   average_wages.append(wages)
+    wages = np.average(np.array(df.loc[df['Year'] == year, 'State.Minimum.Wage']))
+    average_wages.append(wages)
 
 
 COLOR_RED = '#DE2D26'
