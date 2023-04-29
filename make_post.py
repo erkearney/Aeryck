@@ -5,6 +5,8 @@ from sqlite3 import Error
 
 from pygments import highlight
 from pygments.lexers import PythonLexer
+from pygments.lexers.r import SLexer
+from pygments.lexers.sql import PostgresLexer
 from pygments.formatters import HtmlFormatter
 
 
@@ -44,28 +46,33 @@ def ingest_file(path) -> 'Tuple':
     text = read_post(path)
     body = ''
     code_block = ''
+    language = None
     in_code_block = False
     for line in text:
         if line.startswith("```"):
             in_code_block = not(in_code_block)
+            if "python" in line:
+                language = "python"
+            elif "r" in line:
+                language = "R"
+            elif "sql" in line:
+                language = "SQL"
             continue
 
         if in_code_block:
             code_block += line
         elif code_block:
-            body += highlight(code_block, PythonLexer(), HtmlFormatter())
+            if language == "python":
+                body += highlight(code_block, PythonLexer(), HtmlFormatter())
+            elif language == "R":
+                body += highlight(code_block, Slexer(), HtmlFormatter())
+            elif language == 'SQL':
+                body += highlight(code_block, PostgresLexer(), HtmlFormatter())
+            else:
+                body += code_block
             code_block = ''
         else:
             body += line
-
-            """
-            code_block += line[4:]
-        elif code_block:
-            body += highlight(code_block, PythonLexer(), HtmlFormatter())
-            code_block = ''
-        else:
-            body += line
-            """
 
     return (body, title)
 

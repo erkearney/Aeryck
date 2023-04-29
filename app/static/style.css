@@ -57,6 +57,11 @@ a:hover {
     text-decoration: underline;
 }
 
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+
 .highlight {
     padding-left: 20px;
     display: flex;
@@ -83,6 +88,7 @@ a:hover {
 
 .nextprev a:hover {
     background-color: #151924;
+    text-decoration: none;
 }
 
 .title {
@@ -113,6 +119,7 @@ a:hover {
 
 .header a:hover {
     background-color: #151924;
+    text-decoration: none;
 }
 
 .header li {

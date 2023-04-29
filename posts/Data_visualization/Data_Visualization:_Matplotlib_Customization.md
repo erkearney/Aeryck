@@ -172,7 +172,7 @@ plt.show()
 So there is no need to 'pull apart' the data into separate lists for data and
 labels.
 
-It's also worth mentioning that matplot lib contains a large number of
+It's also worth mentioning that matplotlib contains a large number of
 'pre-built' styles, so if you want your plot to stand out, but also don't want
 to spend time tweaking all the details, you can try one of those! It's as simple
 as running

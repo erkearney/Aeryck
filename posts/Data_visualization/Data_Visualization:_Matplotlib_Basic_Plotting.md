@@ -2,7 +2,7 @@ Being able to **visualize** data is one of the most important skills for a data
 scientist to have. We can use visualizations to easily communicate our findings
 to non-data scientists much more easily. In these next posts, we're going to
 learn how to effectively use matplotlib to further these skills. The matplotlib
-mini-tutorial will be split into three key sections:
+mini-tutorial will be split into four key sections:
 
 ### [Basic plotting (this post)](https://aeryck.com/post:5)
 ### [Customization](https://aeryck.com/post:6)

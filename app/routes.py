@@ -58,13 +58,13 @@ def show_post_by_id(post_id):
     older = db.execute(
         'SELECT p.id'
         ' FROM post p'
-        ' WHERE p.id = ?', (str(int(post_id) - 1)),
+        ' WHERE p.id = ?', (str(int(post_id) - 1),),
     ).fetchone()
 
     newer = db.execute(
         'SELECT p.id'
         ' FROM post p'
-        ' WHERE p.id = ?', (str(int(post_id) + 1)),
+        ' WHERE p.id = ?', (str(int(post_id) + 1),),
     ).fetchone()
 
     newest = db.execute(
