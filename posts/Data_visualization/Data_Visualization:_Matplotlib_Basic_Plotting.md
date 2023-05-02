@@ -36,7 +36,7 @@ ax.plot(data)
 plt.show()
 ```
 
-![matplotlib figure 1](/static/images/data_visualization/basic_plotting/1.png 
+![matplotlib figure 1](/static/images/data_visualization/matplotlib/basic_plotting/1.png 
 "Figure 1: Random numbers plotted")
 
 ###### (Clearly, if you're following along with me, your plot will look different due to the numbers being randomly generated)
@@ -64,7 +64,7 @@ plt.show()
 
 #### Output: data1: [81, 14, 61, 36, 83], data2: [17, 40, 58, 56, 7]
 
-![matplotlib figure 2](/static/images/data_visualization/basic_plotting/2.png
+![matplotlib figure 2](/static/images/data_visualization/matplotlib/basic_plotting/2.png
 "Figure 2: Two plots of random numbers")
 
 So we've created a single Figure to house two Axes (i.e. two separate plots)
@@ -83,7 +83,7 @@ ax3.scatter(data1, data2)
 plt.show()
 ```
 
-![matplotlib figure 3](/static/images/data_visualization/basic_plotting/3.png
+![matplotlib figure 3](/static/images/data_visualization/matplotlib/basic_plotting/3.png
 "Figure 3: Different plots demonstrated.")
 
 We've just begun to scratch the surface of the types of plots that can be made

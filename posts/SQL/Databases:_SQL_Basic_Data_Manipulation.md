@@ -7,10 +7,6 @@ will be split into four key sections:
 
 ### [Basic Data Manipulation (this post)](https://aeryck.com/post:9)
 ### [Joins and Relationships](https://aeryck.com/post:10)
-### [Intermediate Querying](https://aeryck.com/post:11)
-### [Functions and Aggregation](https://aeryck.com/post:12)
-### [Transactions and Error Handling](https://aeryck.com/post:13)
-### [Exercises](https://aeryck.com/post:14)
 
 [Other tutorials](https://www.postgresqltutorial.com/) will typically start by
 having you download a 'toy database' to get started. This is because in
@@ -629,7 +625,240 @@ SELECT first_name, middle_name, last_name
 </p>
 
 In addition to the AND clause, there's also the OR and NOT clauses, and more.
-We'll go over these clauses in [Intermediate Querying](https://aeryck.com/post:11)
+
+As mentioned before, a relational database will almost always have more than one
+table, so let's create a second one now:
+
+```sql
+CREATE TABLE us_states (
+number SERIAL,
+name VARCHAR(50),
+region VARCHAR(50)
+);
+```
+
+PostgreSQL uses the SERIAL keyword whereas other databases, such as MySQL use
+the AUTO_INCREMENT keyword. Here is how you would create the same table in
+MySQL:
+
+```sql
+CREATE TABLE us_states (
+number INT AUTO_INCREMENT,
+name VARCHAR(50),
+region VARCHAR(50)
+);
+```
+
+Here, we've created a table called us_states and given it three columns: number,
+name, and region. Let's fill our new table with some data by INSERTing states
+based on the order they joined the union:
+
+```sql
+INSERT INTO us_states (name, region)
+VALUES ('Delaware', 'South'),
+       ('Pennsylvania', 'Northeast'),
+       ('New Jersey', 'Northeast'),
+       ('Georgia', 'South'),
+       ('Connecticut', 'Northeast'),
+       ('Massachusetts', 'Northeast'),
+       ('Maryland', 'South'),
+       ('South Carolina', 'South'),
+       ('New Hampshire', 'Northeast'),
+       ('Virginia', 'South'),
+       ('New York', 'Northeast'),
+       ('North Carolina', 'South'),
+       ('Rhode Island', 'Northeast');
+
+SELECT number, name, region
+  FROM us_states;
+```
+
+<table border="1">
+  <tr>
+    <th align="center">number</th>
+    <th align="center">name</th>
+    <th align="center">region</th>
+  </tr>
+  <tr valign="top">
+    <td align="right">1</td>
+    <td align="left">Delaware</td>
+    <td align="left">South</td>
+  </tr>
+  <tr valign="top">
+    <td align="right">2</td>
+    <td align="left">Pennsylvania</td>
+    <td align="left">Northeast</td>
+  </tr>
+  <tr valign="top">
+    <td align="right">3</td>
+    <td align="left">New Jersey</td>
+    <td align="left">Northeast</td>
+  </tr>
+  <tr valign="top">
+    <td align="right">4</td>
+    <td align="left">Georgia</td>
+    <td align="left">South</td>
+  </tr>
+  <tr valign="top">
+    <td align="right">5</td>
+    <td align="left">Connecticut</td>
+    <td align="left">Northeast</td>
+  </tr>
+  <tr valign="top">
+    <td align="right">6</td>
+    <td align="left">Massachusetts</td>
+    <td align="left">Northeast</td>
+  </tr>
+  <tr valign="top">
+    <td align="right">7</td>
+    <td align="left">Maryland</td>
+    <td align="left">South</td>
+  </tr>
+  <tr valign="top">
+    <td align="right">8</td>
+    <td align="left">South Carolina</td>
+    <td align="left">South</td>
+  </tr>
+  <tr valign="top">
+    <td align="right">9</td>
+    <td align="left">New Hampshire</td>
+    <td align="left">Northeast</td>
+  </tr>
+  <tr valign="top">
+    <td align="right">10</td>
+    <td align="left">Virginia</td>
+    <td align="left">South</td>
+  </tr>
+  <tr valign="top">
+    <td align="right">11</td>
+    <td align="left">New York</td>
+    <td align="left">Northeast</td>
+  </tr>
+  <tr valign="top">
+    <td align="right">12</td>
+    <td align="left">North Carolina</td>
+    <td align="left">South</td>
+  </tr>
+  <tr valign="top">
+    <td align="right">13</td>
+    <td align="left">Rhode Island</td>
+    <td align="left">Northeast</td>
+  </tr>
+</table>
+<p>(13 rows)<br />
+</p>
+
+Notice we did *not* specify any values for the **number** column, yet the column
+is populated anyway. This is because we've created this column to start at 1 and
+automatically increment as each new row is added.
+
+Now let's add a new column to us_presidents to house the home state of each
+president. While we're at it, let's also give each president a number, to
+indicate the order of presidential succession. You'll notice that accomplishing
+this task requires a very verbose statement. This is because while adding new
+columns to tables in a relational database is *possible* (we'll make it slightly
+less painful using the CASE keyword, which allows us to implement a switch-like
+statement), it is very *impractical*. Should you ever find yourself designing a
+database, you'll need to put careful thought and consideration into the layout
+of your tables. Adding new columns to a database that has already been deployed,
+and populating them with data is no easy task:
+
+```sql
+UPDATE us_presidents
+   SET number =
+  CASE
+  WHEN last_name = 'Washington' THEN 1
+  WHEN last_name = 'Adams' AND middle_name IS NULL THEN 2
+  WHEN last_name = 'Jefferson' THEN 3
+  WHEN last_name = 'Madison' THEN 4
+  WHEN last_name = 'Monroe' THEN 5
+  WHEN last_name = 'Adams' AND middle_name = 'Quincy' THEN 6
+  WHEN last_name = 'Jackson' THEN 7
+  WHEN last_name = 'Buren' THEN 8
+END;
+
+UPDATE us_presidents
+   SET home_state =
+  CASE
+  WHEN last_name = 'Washington' THEN 'Virginia'
+  WHEN last_name = 'Adams' AND middle_name IS NULL THEN 'Massachusetts'
+  WHEN last_name = 'Jefferson' THEN 'Virginia'
+  WHEN last_name = 'Madison' THEN 'Virginia'
+  WHEN last_name = 'Monroe' THEN 'Virginia'
+  WHEN last_name = 'Adams' AND middle_name = 'Quincy' THEN 'Massachusetts'
+  WHEN last_name = 'Jackson' THEN 'South Carolina'
+  WHEN last_name = 'Buren' THEN 'New York'
+END;
+
+SELECT first_name, middle_name, last_name, home_state
+  FROM us_presidents
+ ORDER BY number;
+```
+
+###### Notice we had to be careful of John (Quincy)? Adams again
+
+<table border="1">
+  <tr>
+    <th align="center">first_name</th>
+    <th align="center">middle_name</th>
+    <th align="center">last_name</th>
+    <th align="center">home_state</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">George</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Washington</td>
+    <td align="left">Virginia</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">John</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Adams</td>
+    <td align="left">Massachusetts</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">Thomas</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Jefferson</td>
+    <td align="left">Virginia</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">James</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Madison</td>
+    <td align="left">Virginia</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">James</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Monroe</td>
+    <td align="left">Virginia</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">John</td>
+    <td align="left">Quincy</td>
+    <td align="left">Adams</td>
+    <td align="left">Massachusetts</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">Andrew</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Jackson</td>
+    <td align="left">South Carolina</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">Martin</td>
+    <td align="left">&nbsp; </td>
+    <td align="left">Buren</td>
+    <td align="left">New York</td>
+  </tr>
+</table>
+<p>(8 rows)<br />
+</p>
+
+Here, we SELECTed and included the ORDER BY clause to sort our results, so we'd
+have the first president in the first row (like when we used WHERE in the last
+post, we can ORDER BY a column even if we didn't SELECT that column!)
 
 
 ### \*A brief word on SQL syntax and style
@@ -665,4 +894,4 @@ in this tutorial, so statements will follow the form:
 SELECT id FROM people;
 ```
 
-In the [next tutorial](), we will learn about functions and aggregation.
+In the [next tutorial](), we will learn about joins and relationships.

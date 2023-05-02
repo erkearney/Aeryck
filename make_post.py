@@ -83,8 +83,11 @@ def insert_into_db(database, post, update=False):
     if update:
         sql = ''' UPDATE post SET body = (?) WHERE title = (?) '''
     else:
-        sql = ''' INSERT INTO post(body, title) VALUES(?,?) '''
-    cursor.execute(sql,post)
+        new_post_id = cursor.execute("SELECT COALESCE(MAX(id), 0) "\
+                                     "FROM post").fetchone()[0] + 1
+        post = (new_post_id, *post)
+        sql = ''' INSERT INTO post(id, body, title) VALUES(?,?,?) '''
+    cursor.execute(sql, post)
     database.commit()
 
 
