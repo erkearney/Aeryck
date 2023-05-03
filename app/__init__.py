@@ -2,13 +2,13 @@
 Create the Flask instance
 """
 import os
-
 from flask import Flask
+from . import database
+
 
 app = Flask(__name__)
 from app import routes
 
-from . import database
 
 app.config.from_mapping(
     SECRET_KEY='dev',

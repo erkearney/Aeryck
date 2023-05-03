@@ -1,5 +1,7 @@
 name: Pylint
 
+ignored-modules: code_posts
+
 on: [push]
 
 jobs:

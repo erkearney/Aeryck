@@ -48,6 +48,8 @@ def close_database(error=None):
     database : sqlite3 conneciton
         The backend database for aeryck.com
     """
+    if error:
+        print(f'ERROR in close_database: {error}')
     database = g.pop('database', None)
 
     if database is not None:
@@ -65,8 +67,8 @@ def init_database():
     """
     database = get_database()
 
-    with current_app.open_resource('schema.sql') as f:
-        database.executescript(f.read().decode('utf8'))
+    with current_app.open_resource('schema.sql') as schema:
+        database.executescript(schema.read().decode('utf8'))
 
 
 @click.command('init-db')
