@@ -157,7 +157,7 @@ INTERVAL = 250
 SECONDS_BETWEEN_REPEAT = 1
 FRAMES = num_years + int((SECONDS_BETWEEN_REPEAT*1000)/INTERVAL)
 
-def update(frame):
+def update_rectangles(frame):
     if frame < num_years:
         txt.set_text(f'Year: {years[frame]}')
         federal_line.set_xdata([federal_min_wages[frame]])
@@ -174,7 +174,7 @@ def update(frame):
 
     return bars.datavalues
 
-ani = animation.FuncAnimation(fig=fig, func=update, frames=FRAMES, interval=INTERVAL, repeat=True)
+ani = animation.FuncAnimation(fig=fig, func=update_rectangles, frames=FRAMES, interval=INTERVAL, repeat=True)
 
 plt.show()
 
