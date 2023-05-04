@@ -1,3 +1,4 @@
+# pylint: disable=C0411, C0413
 """
 Create the Flask instance
 """
