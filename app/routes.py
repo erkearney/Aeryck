@@ -50,7 +50,7 @@ def show_post_by_id(post_id):
     post = db_conn.execute(
         'SELECT p.id, title, body, created'
         ' FROM post p'
-        ' WHERE p.id = ?', (post_id),
+        ' WHERE p.id = ?', (post_id,),
     ).fetchone()
     g.id = post['id']
     title = post['title']

@@ -133,8 +133,11 @@ SELECT name, region
 </p>
 
 As you've likely gathered from this posts' title, we're going to be JOINing
-these tables together (we're going to be making the use of aliases by using the
-AS keyword to keep the statement length under control).
+these tables together. We're going to be making the use of aliases by using the
+AS keyword to keep the statement length under control. We'll also add the ORDER
+BY clause so that we can sort the presidents by the order of which they were
+elected. Notice how just like with the WHERE clause, we can ORDER BY a column
+even if we aren't SELECTing that column.
 
 ```sql
 SELECT p.first_name, p.middle_name, p.last_name, p.home_state, s.region
@@ -613,13 +616,128 @@ can help make sense of it.
 visualized](/static/images/databases/sql/joins_and_relationships/1.png "Figure
 1: Different types of JOINs visualized")
 
-### Primary and Foreign Keys
-Take a moment to imagine how this database might evolve over time. Clearly we'd
-add the remaining states and presidents, but we might also want a
-political_parties table. Perhaps also a vice_presidents table, and/or a senators
-and representatives table? As the size of this database grows we're going to
-need to introduce some constraints in order to manage the complexity and also
-help catch errors.
+### Aggregate Functions and GROUP BY
+We'll wrap up this post by fleshing out our querying knowledge, starting with
+the aggregate function COUNT(), which simply returns the number of matching
+rows:
+
+```sql
+SELECT COUNT(home_state)
+  FROM us_presidents
+ WHERE home_state = 'Virginia';
+```
+
+<table border="1">
+  <tr>
+    <th align="center">count</th>
+  </tr>
+  <tr valign="top">
+    <td align="right">4</td>
+  </tr>
+</table>
+<p>(1 row)<br />
+</p>
+
+This query simply COUNTed the number of rows where home_state is 'Virginia'.
+Using aggregate functions introduces some limitations into how we write our
+queries. For example, this query fails:
+
+```sql
+SELECT last_name, COUNT(home_state)
+  FROM us_presidents
+ WHERE home_state = 'Virginia';
+```
+
+> ERROR:  column "us_presidents.last_name" must appear in the GROUP BY clause or be used in an aggregate function 
+
+> LINE 1: SELECT last_name, COUNT(home_state)
+
+We can intuitively understand this error by looking at the output of the
+previous query. By adding the COUNT() aggregate function, we've 'smashed' all
+rows WHERE home_state = 'Virginia' into one. We can't SELECT a last_name from
+this one row because there's no way for SQL to determine which last_name
+('Washington', 'Jefferson', 'Madison', or 'Monroe') we could be referring to!
+
+The other aggregate functions are SUM() and AVG(). They're not particularly
+applicable to this database, but are incredibly useful in others.
+
+So if we want more columns we'll need to either use more aggregate functions or
+the GROUP BY clause. Here is a query that will output the number of presidents
+from each state:
+
+```sql
+SELECT home_state, COUNT(home_state)
+  FROM us_presidents
+ GROUP BY home_state
+ ORDER BY count DESC;
+```
+
+<table border="1">
+  <tr>
+    <th align="center">home_state</th>
+    <th align="center">count</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">Virginia</td>
+    <td align="right">4</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">Massachusetts</td>
+    <td align="right">2</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">New York</td>
+    <td align="right">1</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">Tennessee</td>
+    <td align="right">1</td>
+  </tr>
+</table>
+<p>(4 rows)<br />
+</p>
+
+And finally, we of course can combine JOINs, aggregate functions, and the GROUP
+BY clause. Let's come up with a query that will tell use home many presidents
+came from each *region* of the United States:
+
+```sql
+SELECT s.region, COUNT(s.region)
+  FROM us_presidents AS p
+  JOIN us_states As s ON p.home_state = s.name
+ GROUP BY s.region;
+```
+
+<table border="1">
+  <tr>
+    <th align="center">region</th>
+    <th align="center">count</th>
+  </tr>
+  <tr valign="top">
+    <td align="left">South</td>
+    <td align="right">4</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">Northeast</td>
+    <td align="right">3</td>
+  </tr>
+</table>
+<p>(2 rows)<br />
+</p>
+
+You would be forgiven if you think this is a strange query. After all, why are
+we JOINing us_presidents ONto us_states, if we're only SELECTing columns from
+us_states? What must be realized is that when executing this query, the JOIN
+executes first, meaning we're recreating something like the table created by our
+very first JOIN, all the way back at the start of this post. Afterwards, we're
+using the COUNT() aggregate function and GROUP BY clause to smash the rows whose
+regions are equal to each other together, leaving us with just two rows
+containing 'South' and 'Northeast', along with the respective COUNTs.
+
+In the [next post]() I'm going to introduce Primary and Foreign keys, a topic
+I've been carefully avoiding up until now, despite many tutorials leading with
+it.
+
 
 \* We can actually make this table a little less confusing by re-thinking our
 query. The home_state column is blank for states that haven't yet sent someone
