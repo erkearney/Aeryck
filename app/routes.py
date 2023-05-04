@@ -2,8 +2,8 @@
 Hook urls to html files in the templates directory.
 """
 from flask import render_template, session, g
-from app import app, database
 import markdown
+from app import app, database
 
 
 @app.route('/', methods=['GET'])
