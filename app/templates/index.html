@@ -6,14 +6,14 @@
 	<br><p class="posted">Posted: {{ date.strftime('%Y, %B-%d') }} </p>
     </div>
     <div class ="nextprev">
-	{% if older %}
-	<a href="{{ url_for('show_post_by_id', post_id=g.id - 1) }}">Older</a>
+	{% if older_title %}
+	<a href="{{ url_for('show_post', post_title=older_title) }}">Older</a>
 	{% endif %}
-	{% if newer %}
-	<a href="{{ url_for('show_post_by_id', post_id=g.id + 1) }}">Newer</a>
+	{% if newer_title %}
+	<a href="{{ url_for('show_post', post_title=newer_title) }}">Newer</a>
 	{% endif %}
-	{% if newest %}
-	<a href="{{ url_for('show_newest_post') }}">Newest</a>
+	{% if newest_title %}
+	<a href="{{ url_for('show_post', post_title=newest_title) }}">Newest</a>
 	{% endif %}
     </div>
 {% endblock %}

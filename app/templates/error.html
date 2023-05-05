@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="error">
+    <h1>YOU BROKE IT</h1>
+    <img src="{{ url_for('static', filename='images/duke_error.jpg') }}"
+    width="500" height="500">
+    <h5>Or maybe I broke it</h5>
+</div>
+{% endblock %}

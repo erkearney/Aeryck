@@ -1,7 +1,9 @@
 """
 Hook urls to html files in the templates directory.
 """
-from flask import render_template, session, g
+from typing import Optional, Tuple
+from flask import render_template, session, g, Response
+from werkzeug.exceptions import HTTPException
 import markdown
 from app import app, database
 
@@ -15,14 +17,13 @@ def index():
     db_conn = database.get_database()
 
     welcome_post = db_conn.execute(
-        'SELECT p.id, created'
-        ' FROM post p'
+        'SELECT id, title'
+        ' FROM post'
         ' WHERE title = "Welcome"'
     ).fetchone()
     session['post_id'] = welcome_post['id']
 
-    return show_post_by_id(str(welcome_post['id']))
-
+    return show_post(welcome_post['title'])
 
 
 @app.route('/blog')
@@ -38,39 +39,86 @@ def blog():
     return render_template('blog.html', posts=posts, title='Blog')
 
 
-@app.route('/post:<string:post_id>', methods=['GET'])
-def show_post_by_id(post_id):
+def get_post_title_by_id(post_id: int) -> Optional[str]:
     """
-    Find and display a post by id number.
+    Retrieve the post title for a given post ID.
 
-    TODO: Add an error page for when user manually navigates to a post that
-    does not exist.
+    Query the database to get the post title corresponding to the given post ID.
+    If the post ID does not exist, return None.
+
+    Args:
+        post_id: The ID of the post to retrieve the title for.
+
+    Returns:
+        The post title as a string, or None if the post ID does not exist.
+
     """
     db_conn = database.get_database()
     post = db_conn.execute(
-        'SELECT p.id, title, body, created'
-        ' FROM post p'
-        ' WHERE p.id = ?', (post_id,),
+        "SELECT title"
+        " FROM post"
+        " WHERE id = ?", (post_id,),
     ).fetchone()
-    g.id = post['id']
+
+    return post['title'] if post else None
+
+
+def get_post(post_title):
+    """
+    Find a post by the posts' title.
+
+    """
+    db_conn = database.get_database()
+    post = db_conn.execute(
+        'SELECT id, title, body, created'
+        ' FROM post'
+        ' WHERE title = ?', (post_title,),
+    ).fetchone()
+
+    return post
+
+
+@app.route("/post:<string:post_title>", methods=["GET"])
+def show_post(post_title: str) -> Response:
+    """
+    Render a post from the database.
+
+    Retrieve and display a post by its title. The post's ID is used to find
+    the older, newer, and newest posts based on their ID values. The post
+    content is converted from Markdown to HTML before being rendered.
+
+    Args:
+        post_title: The title of the post to display.
+
+    Returns:
+        A rendered template with the post content and navigation links.
+
+    """
+    db_conn = database.get_database()
+    post = get_post(post_title)
+    post_id = post["id"]
+    g.id = post_id
     title = post['title']
 
-    older = db_conn.execute(
-        'SELECT p.id'
-        ' FROM post p'
-        ' WHERE p.id = ?', (str(int(post_id) - 1),),
+    older_row = db_conn.execute(
+        'SELECT MAX(id), title'
+        ' FROM post'
+        ' WHERE id < ?', (post_id,),
     ).fetchone()
+    older_title = older_row["title"]
 
-    newer = db_conn.execute(
-        'SELECT p.id'
-        ' FROM post p'
-        ' WHERE p.id = ?', (str(int(post_id) + 1),),
+    newer_row = db_conn.execute(
+        'SELECT MIN(id), title'
+        ' FROM post'
+        ' WHERE id > ?', (post_id,),
     ).fetchone()
+    newer_title = newer_row["title"]
 
-    newest = db_conn.execute(
-        'SELECT MAX(p.id)'
-        ' FROM post p',
+    newest_row = db_conn.execute(
+        'SELECT MAX(id) AS id, title'
+        ' FROM post',
     ).fetchone()
+    newest_title = newest_row["title"] if newest_row["id"] != post_id else None
 
     md_text = markdown.Markdown(extenstions=['fenced_code'])
     body = md_text.convert(post['body'])
@@ -81,37 +129,9 @@ def show_post_by_id(post_id):
                            body=body,
                            title=title,
                            date=date,
-                           older=older,
-                           newer=newer,
-                           newest=newest)
-
-
-@app.route('/newest', methods=['GET'])
-def show_newest_post():
-    """
-    Show the newest post in the database.
-
-    This function retrieves the newest post in the database and stores its ID in
-        the user's session. It then returns the result of the
-        `show_post_by_id()` function, which displays the post with the given ID.
-
-    Returns:
-        render_template()
-
-    Raises:
-        None.
-
-    """
-    db_conn = database.get_database()
-    newest_post = db_conn.execute(
-        'SELECT p.id, created'
-        ' FROM post p'
-        ' WHERE p.id = (SELECT MAX(id) FROM post)',
-    ).fetchone()
-    session['post_id'] = newest_post['id']
-
-    return show_post_by_id(str(newest_post['id']))
-
+                           older_title=older_title,
+                           newer_title=newer_title,
+                           newest_title=newest_title)
 
 
 @app.route('/resume')
@@ -120,3 +140,22 @@ def show_resume():
     Show Eric's current resume
     """
     return render_template('resume.html')
+
+
+@app.errorhandler(404)
+@app.errorhandler(500)
+def handle_error(error: HTTPException) -> Tuple[Response, int]:
+    """
+    Handle 404 and 500 errors.
+
+    Print the error and display an error page using the 'error.html' template.
+
+    Args:
+        error: The error object.
+
+    Returns:
+        A tuple containing the rendered error template and the error code.
+
+    """
+    print(f"ERROR: {error}")
+    return render_template('error.html'), 404

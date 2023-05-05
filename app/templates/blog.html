@@ -2,7 +2,7 @@
 {% block content %}
     {% for post in posts %}
     <div>
-	<h1 class="title"><a href={{ url_for('show_post_by_id', post_id=post.id) }}>{{ post.title }}</a></h1>
+	<h1 class="title"><a href={{ url_for('show_post', post_title=post.title) }}>{{ post.title }}</a></h1>
     </div>
     {% endfor %}
 {% endblock %}
