@@ -39,13 +39,23 @@ details[open] summary {
 
 body {
     color: #EFEFEF;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
+    font-family: "Open Dyslexic", Arial, sans-serif;
+    font-size: 18px;
     line-height: 1.5;
+    margin: auto;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 32px;
+    max-width: 115ch;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    box-sizing: border-box;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
+    margin-bottom: 1rem;
 }
 
 a {
@@ -57,9 +67,33 @@ a:hover {
     text-decoration: underline;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 th, td {
-  padding: 15px;
+  padding: 0.5rem;
+  border: 1px solid #444444;
   text-align: left;
+}
+
+th {
+    background-color: #2E2E2E;
+    color: #F5F5F5;
+    font-weight: bold;
+}
+
+tr:nth-child(4n+0),
+tr:nth-child(4n+1) {
+    background-color: #1E1E1E;
+}
+
+
+tr:hover {
+    background-color: #3C3C3C;
 }
 
 .highlight {
@@ -96,11 +130,8 @@ th, td {
 }
 
 .logo {
+    width: 125px;
     height: auto;
-    width: auto;
-    max-height: 75px;
-    max-width: 150px;
-    cursor: pointer;
 }
 
 .header * {
@@ -143,7 +174,15 @@ iframe {
     text-align: center;
 }
 
-pre { line-height: 125%; }
+img {
+    margin-top: 1rem;
+}
+
+pre {
+    font-family: "Fira Code", Consolas, monospace;
+    font-size: 16px;
+    line-height: 125%;
+}
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }

@@ -4,10 +4,11 @@ to non-data scientists much more easily. In these next posts, we're going to
 learn how to effectively use matplotlib to further these skills. The matplotlib
 mini-tutorial will be split into four key sections:
 
-### [Basic plotting (this post)](https://aeryck.com/post:5)
-### [Customization](https://aeryck.com/post:6)
-### [The matplotlib API](https://aeryck.com/post:7)
-### [Exercises](https://aeryck.com/post:8)
+## Matplotlib series
+### [Basic plotting (this post)](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Basic%20Plotting)
+### [Customization](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Customization)
+### [The matplotlib API](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20API)
+### [Exercises](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Exercises)
 
 
 All of the code in this tutorial can be found

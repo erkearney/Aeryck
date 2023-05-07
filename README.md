@@ -13,11 +13,13 @@ learning.
 
 ## Data Visualization
 
-- [Matplotlib tutorials](https://aeryck.com/post:5)
+- [Matplotlib
+  tutorials](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Basic%20Plotting)
 
 ## Databases
 
-- [SQL tutorials](https://aeryck.com/post:9)
+- [SQL
+  tutorials](https://aeryck.com/post:Databases:%20SQL%20Basic%20Data%20Manipulation)
 
 ## Resources
 

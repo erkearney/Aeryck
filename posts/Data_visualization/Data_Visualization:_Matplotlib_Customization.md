@@ -1,14 +1,15 @@
-In the [previous post](https://aeryck.com/post:5) we learned the basics of
-plotting with matplotlib. Now we'll move onto the second key section,
-Customization.
+In the [previous post](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Basic%20Plotting)
+we learned the basics of plotting with matplotlib. Now we'll move onto the
+second key section, Customization.
 
 All the code from this post can be found
 [here](https://github.com/erkearney/Aeryck/blob/main/code_posts/data_visualization/2part_matplotlib_examples.py)
 
-### [Basic plotting](https://aeryck.com/post:5)
-### [Customization (this post)](https://aeryck.com/post:6)
-### [The matplotlib API](https://aeryck.com/post:7)
-### [Exercises](https://aeryck.com/post:8)
+## Matplotlib series
+### [Basic plotting (this post)](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Basic%20Plotting)
+### [Customization](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Customization)
+### [The matplotlib API](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20API)
+### [Exercises](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Exercises)
 
 Let's start with a quick review of basic plotting, this time we'll compare
 annual headline consumer price inflation [source: World
@@ -143,8 +144,8 @@ Now **that** is a plot!
 
 There is much more customization you can do; as mentioned, just about everything
 can be configured in a matplotlib plot. In the
-[next post](https://aeryck.com/post:7) we're going to cover how to use the
-matplotlib api to fully unlock our potential!
+[next post](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20API)
+we're going to cover how to use the matplotlib api to fully unlock our potential!
 
 * * *
 ### \*BONUS

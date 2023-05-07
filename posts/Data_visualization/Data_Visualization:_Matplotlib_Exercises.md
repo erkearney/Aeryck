@@ -9,11 +9,11 @@ cover everything matplotlib, rather it was intended to provide foundational
 skills. To solve these questions, you'll likely need to use the [matplotlib
 official reference](https://matplotlib.org/stable/api/index).
 
-## matplotlib series:
-### [Basic plotting](https://aeryck.com/post:5)
-### [Customization](https://aeryck.com/post:6)
-### [The matplotlib API](https://aeryck.com/post:7)
-### [Exercises (this post)](https://aeryck.com/post:8)
+## Matplotlib series
+### [Basic plotting (this post)](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Basic%20Plotting)
+### [Customization](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Customization)
+### [The matplotlib API](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20API)
+### [Exercises](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Exercises)
 
 All the code from this post can be found
 [here](https://github.com/erkearney/Aeryck/code_posts/data_visualization/4part_matplotlib_examples.py)

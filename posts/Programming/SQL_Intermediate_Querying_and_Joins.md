@@ -1,7 +1,8 @@
-### [Basic Data Manipulation](https://aeryck.com/post:9)
-### [Joins and Relationships (this post)](https://aeryck.com/post:10)
+### [Basic Data Manipulation](https://aeryck.com/post:SQL: Basic Data Manipulation)
+### [Joins and Relationships (this post)](https://aeryck.com/post:SQL Intermediate Querying and Joins)
+### [Primary and Foreign Keys](https://aeryck.com/post:SQL Primary and Foreign Keys)
 
-In the [last post](https://aeryck.com/post:9) we created a table for some early
+In the [last post](https://aeryck.com/post:SQL Basic Data Manipulation) we created a table for some early
 U.S. Presidents and states, and learned we can view our tables with:
 
 ```sql

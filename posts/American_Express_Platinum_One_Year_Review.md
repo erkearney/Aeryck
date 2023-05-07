@@ -55,7 +55,7 @@ The Platinum card offers free Cell Phone insurance, so long as you pay your phon
 
 **My Value $98.02 (assuming the insurance pays out)**
 ###Amex Offers
-Amex Offers are a couple book offered exclusively to American Express customers, and Platinum card holders can sometimes get pretty sweet coupons. Here's a quick rundown of the offers I was able to redeem on products I was already buying/was planning on buying anyway:
+Amex Offers are a coupon book offered exclusively to American Express customers, and Platinum card holders can sometimes get pretty sweet coupons. Here's a quick rundown of the offers I was able to redeem on products I was already buying/was planning on buying anyway:
 
 * Turo (Airbnb for cars basically): $30
 * Shutterfly (Picture printing service): $10

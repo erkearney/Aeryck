@@ -2,13 +2,13 @@
 Welcome to the section covering the matplotlib API, from this point on, things are
 going to get a lot more intense (and fun), and the explanations will be much
 more of a broad overview, rather than a careful explanation. Your understanding
-of [Basic Plotting](https://aeryck.com/post:5) and
-[Customization](https://aeryck.com/post:6) will need to be rock-solid in order
-to keep up.
+of [Basic Plotting](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Basic%20Plotting) and
+[Customization](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Customization)
+will need to be rock-solid in order to keep up.
 
-In the [previous post](https://aeryck.com/post:6) we delved deeper by
-customizing plots, and we converted a simple collection of lines and axes into
-a truly effective visualization of data.
+In the [previous post](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Customization)
+we delved deeper by customizing plots, and we converted a simple collection of
+lines and axes into a truly effective visualization of data.
 
 ![Standard plot vs customized plot](static/images/data_visualization/matplotlib/api/1.png
 "Figure 1: Standard plot vs customized plot")
@@ -24,16 +24,17 @@ Calc](https://www.libreoffice.org/discover/calc/) in about 30 seconds.
 It's true that up until this point everything we've done could be done in your
 typical spreadsheeting software (and it'd probably be a lot faster too). That's
 all about to change; in this post we're going to learn how to use the matplotlib
-APplication Interface (API) to do some truly interesting things with plots.
+**A**pplication **P**rogramming **I**nterface (API) to do some truly interesting
+things with plots.
 
 All the code from this post can be found
 [here](https://github.com/erkearney/Aeryck/blob/main/code_posts/data_visualization/3part_matplotlib_examples.py)
 
 ## matplotlib series:
-### [Basic plotting](https://aeryck.com/post:5)
-### [Customization](https://aeryck.com/post:6)
-### [The matplotlib API (this post)](https://aeryck.com/post:7)
-### [Exercises](https://aeryck.com/post:8)
+### [Basic plotting (this post)](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Basic%20Plotting)
+### [Customization](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Customization)
+### [The matplotlib API](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20API)
+### [Exercises](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Exercises)
 
 We can add a little *pizzazz* to our plots by animating them, let's demonstrate
 by plotting the minimum wage in the states of California and Colorado over time
@@ -58,7 +59,7 @@ california = list(df.loc[df['State'] == 'California', 'State.Minimum.Wage'])
 colorado = list(df.loc[df['State'] == 'Colorado', 'State.Minimum.Wage'])
 ```
 
-Now we'll add some styling as we did [previously](https://aeryck.com/post:6):
+Now we'll add some styling as we did previously.
 
 ```python
 CA_COLOR = '#6699CC' # blue
@@ -231,8 +232,8 @@ bars = ax.barh(state_names, starting_min_wages)
 ###### We need to redefine state_names to filter out the five states that have no minimum wage.
 
 Most of this should look familiar if you read the [customization
-post](https://aeryck.com/post:6). One new addition is the call to
-[*Axis.set_major_formatter*](https://matplotlib.org/stable/api/_as_gen/matplotlib.axis.Axis.set_major_formatter.html)
+post](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Customization).
+One new addition is the call to [*Axis.set_major_formatter*](https://matplotlib.org/stable/api/_as_gen/matplotlib.axis.Axis.set_major_formatter.html)
 using the currency function we wrote, which simply formats a given string with a
 dollar sign and two decimal places. Notice the additional **pos** argument in
 currency(), which is required by the

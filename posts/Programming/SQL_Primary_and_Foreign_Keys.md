@@ -1,3 +1,7 @@
+### [Basic Data Manipulation](https://aeryck.com/post:SQL: Basic Data Manipulation)
+### [Joins and Relationships](https://aeryck.com/post:SQL Intermediate Querying and Joins)
+### [Primary and Foreign Keys (this post)](https://aeryck.com/post:SQL Primary and Foreign Keys)
+
 ### Primary and Foreign Keys
 Take a moment to imagine how this database might evolve over time. Clearly we'd
 add the remaining states and presidents, but we might also want a
