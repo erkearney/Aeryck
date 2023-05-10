@@ -15,18 +15,13 @@ probability and statistics, and machine learning. My tutorials are written with
 a "bottom-up" approach; emphasizing mastering the basics and gradually building
 upon them, with the aim to 'self-discover' the more complex concepts.
 
-## Tutorials
-
-- [Data Visualization](#data_visualization)
-- [Programming](#programming)
-
 ## Data Visualization
 
 - [Matplotlib](https://aeryck.com/post:Data%20Visualization:%20Matplotlib%20Basic%20Plotting)
 
 ## Programming
 
-- [SQL](https://aeryck.com/post:Databases:%20SQL%20Basic%20Data%20Manipulation)
+- [SQL](https://aeryck.com/post:SQL%20Basic%20Data%20Manipulation)
 
 You can reach me at
 [erickearney@protonmail.com](mailto:erickearney@protonmail.com). If you have a

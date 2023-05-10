@@ -143,7 +143,7 @@ even if we aren't SELECTing that column.
 ```sql
 SELECT p.first_name, p.middle_name, p.last_name, p.home_state, s.region
   FROM us_presidents AS p
-  JOIN us_states AS s ON p.home_state = s.name
+       JOIN us_states AS s ON p.home_state = s.name
  ORDER BY p.number;
 ```
 
@@ -386,7 +386,7 @@ first specified (i.e., 'left') table, even if it does not match the second
 ```sql
 SELECT p.first_name, p.middle_name, p.last_name, p.home_state, s.region
   FROM us_presidents as p
-  LEFT JOIN us_states as s ON p.home_state = s.name
+       LEFT JOIN us_states as s ON p.home_state = s.name
  ORDER BY p.number;
 ```
 
@@ -468,7 +468,7 @@ Take a second to consider what the output of a RIGHT JOIN will be:
 ```sql
 SELECT p.first_name, p.middle_name, p.last_name, p.home_state, s.region
   FROM us_presidents as p
- RIGHT JOIN us_states as s ON p.home_state = s.name
+       RIGHT JOIN us_states as s ON p.home_state = s.name
  ORDER BY p.number;
 ```
 
@@ -705,7 +705,7 @@ came from each *region* of the United States:
 ```sql
 SELECT s.region, COUNT(s.region)
   FROM us_presidents AS p
-  JOIN us_states As s ON p.home_state = s.name
+       JOIN us_states As s ON p.home_state = s.name
  GROUP BY s.region;
 ```
 
@@ -908,7 +908,7 @@ simply use an ALIAS to resolve this:
 ```sql
 SELECT p.first_name, p.middle_name, p.last_name, s.name AS state, s.region
   FROM us_presidents as p
-  FULL JOIN us_states as s ON p.home_state = s.name
+       FULL JOIN us_states as s ON p.home_state = s.name
  ORDER BY p.number;
 ```
 
