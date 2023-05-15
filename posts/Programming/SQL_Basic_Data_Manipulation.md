@@ -8,6 +8,7 @@ will be split into four key sections:
 ### [Basic Data Manipulation (this post)](https://aeryck.com/post:SQL: Basic Data Manipulation)
 ### [Joins and Relationships](https://aeryck.com/post:SQL Intermediate Querying and Joins)
 ### [Primary and Foreign Keys](https://aeryck.com/post:SQL Primary and Foreign Keys)
+### [Transactions and ACID properties](https://aeryck.com/post:SQL Transactions and ACID Properties)
 
 
 [Other tutorials](https://www.postgresqltutorial.com/) will typically start by
@@ -38,9 +39,9 @@ always be many more). A table can be created as:
 
 ```sql
 CREATE TABLE us_presidents (
-    first_name VARCHAR(50),
-    last_name VARCHAR(50),
-    political_party VARCHAR(50)
+    first_name VARCHAR(30),
+    last_name VARCHAR(30),
+    political_party VARCHAR(30)
 );
 ```
 
@@ -48,7 +49,7 @@ Here we've created a table and given it the name "us_presidents". We've given
 the table three columns: first_name, last_name, and political_party. In SQL, we
 must specify the [datatype](https://www.w3schools.com/sql/sql_datatypes.asp)
 of columns, be it INT, DATE, etc. In this case, we've set the datatype of each
-column to VARCHAR(50), meaning a string of variable length, up to 50 characters.
+column to VARCHAR(30), meaning a string of variable length, up to 30 characters.
 
 
 So we have a table, but it's currently devoid of any data. We can insert data
@@ -331,7 +332,7 @@ these in the [next post](https://aeryck.com/post:10)).
 
 ```sql
 ALTER TABLE us_presidents
-  ADD middle_name VARCHAR(50);
+  ADD middle_name VARCHAR(30);
 
 SELECT first_name, middle_name, last_name
   FROM us_presidents;
@@ -634,8 +635,8 @@ table, so let's create a second one now:
 ```sql
 CREATE TABLE us_states (
 number SERIAL,
-name VARCHAR(50),
-region VARCHAR(50)
+name VARCHAR(30),
+region VARCHAR(30)
 );
 ```
 
@@ -646,8 +647,8 @@ MySQL:
 ```sql
 CREATE TABLE us_states (
 number INT AUTO_INCREMENT,
-name VARCHAR(50),
-region VARCHAR(50)
+name VARCHAR(30),
+region VARCHAR(30)
 );
 ```
 

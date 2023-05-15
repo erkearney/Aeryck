@@ -3,7 +3,7 @@
     <div>
 	<h1 class="title">{{ title }}</h1>
 	{{ body|safe }}
-	<br><p class="posted">Posted: {{ date.strftime('%Y, %B-%d') }} </p>
+	<br><p class="posted">Posted: {{ date.strftime('%Y-%m-%d') }} </p>
     </div>
     <div class ="nextprev">
 	{% if older_title %}

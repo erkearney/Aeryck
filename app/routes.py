@@ -134,6 +134,24 @@ def show_post(post_title: str) -> Response:
                            newest_title=newest_title)
 
 
+@app.route('/latest')
+def get_latest_post() -> str:
+    """
+    Get the title of the post with the largest ID value.
+
+    Returns:
+        str: The title of latest post from the database.
+    """
+    db_conn = database.get_database()
+    latest_row = db_conn.execute(
+        'SELECT MAX(id) AS id, title'
+        ' FROM post',
+    ).fetchone()
+    latest_title = latest_row["title"]
+
+    return show_post(latest_title)
+
+
 @app.route('/resume')
 def show_resume():
     """

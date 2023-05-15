@@ -1,6 +1,7 @@
 ### [Basic Data Manipulation](https://aeryck.com/post:SQL: Basic Data Manipulation)
 ### [JOINs and Relationships](https://aeryck.com/post:SQL Intermediate Querying and JOINs)
 ### [PRIMARY and FOREIGN KEYs (this post)](https://aeryck.com/post:SQL PRIMARY and FOREIGN Keys)
+### [Transactions and ACID properties](https://aeryck.com/post:SQL Transactions and ACID Properties)
 
 Take a moment to imagine how this database might evolve over time. Clearly we'd
 add the remaining states and presidents, but we might also want a
@@ -449,5 +450,5 @@ that by waiting this long to broach this topic, it's more clear now why PRIMARY
 and FOREIGN KEYs are not only useful, but necessary in large relational
 databases.
 
-In the [next post]() we're going to delve into ACID properties, and how to
+In the [next post](https://aeryck.com/post:SQL Transactions and ACID Properties) we're going to delve into ACID properties, and how to
 backup and protect our database.
