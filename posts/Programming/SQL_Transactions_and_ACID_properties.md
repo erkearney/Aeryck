@@ -5,10 +5,11 @@ being INSERTed, or even worse, a bunch of real data being DELETEd? One important
 measure we can take to protect ours database is to ensure that our work be
 implemented as TRANSACTIONs. 
 
-### [Basic Data Manipulation (this post)](https://aeryck.com/post:SQL: Basic Data Manipulation)
+### [Basic Data Manipulation](https://aeryck.com/post:SQL Basic Data Manipulation)
 ### [Joins and Relationships](https://aeryck.com/post:SQL Intermediate Querying and Joins)
 ### [Primary and Foreign Keys](https://aeryck.com/post:SQL Primary and Foreign Keys)
 ### [Transactions and ACID properties (this post)](https://aeryck.com/post:SQL Transactions and ACID Properties)
+### [Views Procedures and Functions](https://aeryck.com/post:SQL Views Procedures and Functions)
 
 
 When changes are made as TRANSACTIONs, it becomes

@@ -5,10 +5,11 @@ manipulation is to use a *relational database*, along with **S**tructured
 effectively use SQL to store, retrieve, and manipulate data. The mini-tutorial
 will be split into four key sections:
 
-### [Basic Data Manipulation (this post)](https://aeryck.com/post:SQL: Basic Data Manipulation)
+### [Basic Data Manipulation (this post)](https://aeryck.com/post:SQL Basic Data Manipulation)
 ### [Joins and Relationships](https://aeryck.com/post:SQL Intermediate Querying and Joins)
 ### [Primary and Foreign Keys](https://aeryck.com/post:SQL Primary and Foreign Keys)
 ### [Transactions and ACID properties](https://aeryck.com/post:SQL Transactions and ACID Properties)
+### [Views Procedures and Functions](https://aeryck.com/post:SQL Views Procedures and Functions)
 
 
 [Other tutorials](https://www.postgresqltutorial.com/) will typically start by
