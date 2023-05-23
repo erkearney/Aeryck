@@ -2,10 +2,9 @@
 Hook urls to html files in the templates directory.
 """
 from typing import Optional, Tuple
-from flask import render_template, session, g, Response, request, url_for
+from flask import render_template, session, g, Response
 from werkzeug.exceptions import HTTPException
 import markdown
-import matplotlib.pyplot as plt
 from app import app, database
 
 
@@ -159,88 +158,6 @@ def show_resume():
     Show Eric's current resume
     """
     return render_template('resume.html')
-
-
-@app.route('/pf-tool', methods=['GET', 'POST'])
-def pf_tool():
-    """
-    PH
-    """
-    income = 0
-    rent = 0
-    food = 0
-    utilities = 0
-    income_earning_expenses = 0
-    healthcare = 0
-    minimum_debt_payments = 0
-    message = 'Enter your basic budget information'
-
-    if request.method == 'POST':
-        try:
-            income = float(request.form.get('income'))
-            rent = float(request.form.get('rent'))
-            food = float(request.form.get('food'))
-            utilities = float(request.form.get('utilities'))
-            income_earning_expenses = float(request.form.get('income_earning_expenses'))
-            healthcare = float(request.form.get('healthcare'))
-            minimum_debt_payments = float(request.form.get('minimum_debt_payments'))
-        except ValueError:
-            print('ValueError in GET')
-            return render_template('pf-tool.html', img_url=None,
-                                                   income=income,
-                                                   rent=rent,
-                                                   food=food,
-                                                   utilities=utilities,
-                                                   income_earning_expenses=income_earning_expenses,
-                                                   healthcare=healthcare,
-                                                   minimum_debt_payments=minimum_debt_payments,
-                                                   message=message)
-
-        total_essential_expenses = rent + food + utilities + income_earning_expenses + healthcare + minimum_debt_payments
-        essentials_percent = 100 * total_essential_expenses / income if income != 0 else 100
-        if essentials_percent > 100:
-            message = f'Time to panic, your essential expenses account for {essentials_percent:.0f}% of your income, meaning this is unsustainable.'
-        elif essentials_percent > 50:
-            message = f'Your essential expenses account for {essentials_percent:.0f}% of your income. This is relatively high, you may need to explore options to either reduce your expenses by ${total_essential_expenses - income/2:.2f}, or increase your income to ${total_essential_expenses * 2:.2f}.'
-        else:
-            message = f'Excellent, your monthly essential expenses account for {essentials_percent:.0f}% of your income, which is below the recommended 50%.'
-        budget_remaining = income - total_essential_expenses
-        if income > 0 and budget_remaining >= 0:
-            fig = plt.figure(figsize=(6,6))
-            plt.pie([total_essential_expenses, budget_remaining], explode=(0.1, 0), shadow=True, startangle=90, colors=['#ff9999', '#66b3ff', '#99ff99', '#ffcc99'], labels=['essentials', 'remaining'], wedgeprops=dict(width=0.5), autopct='%1.1f%%')
-            plt.title('Essential Expenses vs. Income', pad=20, color='#cccccc')
-            plt.axis('equal')
-            fig.patch.set_facecolor('#363535')
-
-            pie_image = '/home/e/Documents/Aeryck/app/static/pie_chart.png'
-            plt.savefig(pie_image)
-            print(f'Saving to {pie_image}')
-            plt.close()
-
-            img_url = url_for('static', filename='pie_chart.png')
-
-            return render_template('pf-tool.html', img_url=img_url,
-                                                   income=income,
-                                                   rent=rent,
-                                                   food=food,
-                                                   utilities=utilities,
-                                                   income_earning_expenses=income_earning_expenses,
-                                                   healthcare=healthcare,
-                                                   minimum_debt_payments=minimum_debt_payments,
-                                                   message=message)
-        else:
-            print(f'Users expenses: {total_essential_expenses} exceedes their income {income} :(')
-
-
-    return render_template('pf-tool.html', img_url=None,
-                                           income=income,
-                                           rent=rent,
-                                           food=food,
-                                           utilities=utilities,
-                                           income_earning_expenses=income_earning_expenses,
-                                           healthcare=healthcare,
-                                           minimum_debt_payments=minimum_debt_payments,
-                                           message=message)
 
 
 @app.errorhandler(404)

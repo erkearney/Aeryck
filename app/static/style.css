@@ -184,58 +184,6 @@ pre {
     line-height: 125%;
 }
 
-#pf h1 {
-  font-size: 2em;
-  margin-bottom: 0.5em;
-}
-
-#pf h2 {
-  font-size: 1.5em;
-  margin-bottom: 0.5em;
-}
-
-#pf h3 {
-  font-size: 1.2em;
-  margin-bottom: 0.5em;
-}
-
-#pf p, li {
-  font-size: 1em;
-  line-height: 1.5em;
-}
-
-#pf a {
-  color: #4A90E2;
-  text-decoration: none;
-}
-
-#pf a:hover {
-  color: #F8E71C;
-}
-
-#pf button {
-  background-color: #F8E71C;
-  color: #1D1E23;
-  border: none;
-  padding: 10px 20px;
-  margin: 10px 0;
-  cursor: pointer;
-}
-
-#pf button:hover {
-  background-color: #F5F5F7;
-  color: #1D1E23;
-}
-
-#pf input, select, textarea {
-  display: block;
-  width: 100%;
-  font-size: 1em;
-  border: 1px solid #F5F5F7;
-  background-color: #2F3036;
-  color: #F5F5F7;
-}
-
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
