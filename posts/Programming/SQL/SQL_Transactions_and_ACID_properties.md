@@ -8,7 +8,7 @@ implemented as TRANSACTIONs.
 ### [Basic Data Manipulation](https://aeryck.com/post:SQL Basic Data Manipulation)
 ### [Joins and Relationships](https://aeryck.com/post:SQL Intermediate Querying and Joins)
 ### [Primary and Foreign Keys](https://aeryck.com/post:SQL Primary and Foreign Keys)
-### [Transactions and ACID properties (this post)](https://aeryck.com/post:SQL Transactions and ACID Properties)
+### [Transactions and ACID properties (this post)](https://aeryck.com/post:SQL%20Transactions%20and%20ACID%20properties)
 ### [Views Procedures and Functions](https://aeryck.com/post:SQL Views Procedures and Functions)
 
 

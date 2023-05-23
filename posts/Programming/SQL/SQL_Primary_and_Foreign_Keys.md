@@ -1,7 +1,8 @@
 ### [Basic Data Manipulation](https://aeryck.com/post:SQL: Basic Data Manipulation)
 ### [JOINs and Relationships](https://aeryck.com/post:SQL Intermediate Querying and JOINs)
 ### [PRIMARY and FOREIGN KEYs (this post)](https://aeryck.com/post:SQL PRIMARY and FOREIGN Keys)
-### [Transactions and ACID properties](https://aeryck.com/post:SQL Transactions and ACID Properties)
+### [Transactions and ACID properties](https://aeryck.com/post:SQL%20Transactions%20and%20ACID%20properties)
+### [Views Procedures and Functions](https://aeryck.com/post:SQL Views Procedures and Functions)
 
 Take a moment to imagine how this database might evolve over time. Clearly we'd
 add the remaining states and presidents, but we might also want a
