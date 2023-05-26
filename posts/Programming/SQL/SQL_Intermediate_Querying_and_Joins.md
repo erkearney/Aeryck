@@ -1,11 +1,12 @@
-### [Basic Data Manipulation](https://aeryck.com/post:SQL: Basic Data Manipulation)
+In the [last post](https://aeryck.com/post:SQL Basic Data Manipulation) we created a table for some early
+U.S. Presidents and states, and learned we can view our tables with:
+
+### [Basic Data Manipulation](https://aeryck.com/post:SQL Basic Data Manipulation)
 ### [Joins and Relationships (this post)](https://aeryck.com/post:SQL Intermediate Querying and Joins)
 ### [Primary and Foreign Keys](https://aeryck.com/post:SQL Primary and Foreign Keys)
 ### [Transactions and ACID properties](https://aeryck.com/post:SQL%20Transactions%20and%20ACID%20properties)
 ### [Views Procedures and Functions](https://aeryck.com/post:SQL Views Procedures and Functions)
-
-In the [last post](https://aeryck.com/post:SQL Basic Data Manipulation) we created a table for some early
-U.S. Presidents and states, and learned we can view our tables with:
+### [Exercises)](https://aeryck.com/post:SQL Views Procedures and Functions)
 
 ```sql
 SELECT first_name, middle_name, last_name, home_state

@@ -9,8 +9,8 @@ implemented as TRANSACTIONs.
 ### [Joins and Relationships](https://aeryck.com/post:SQL Intermediate Querying and Joins)
 ### [Primary and Foreign Keys](https://aeryck.com/post:SQL Primary and Foreign Keys)
 ### [Transactions and ACID properties (this post)](https://aeryck.com/post:SQL%20Transactions%20and%20ACID%20properties)
-### [Views Procedures and Functions](https://aeryck.com/post:SQL Views Procedures and Functions)
-
+### [Views Procedures and Functions)](https://aeryck.com/post:SQL Views Procedures and Functions)
+### [Exercises)](https://aeryck.com/post:SQL Views Procedures and Functions)
 
 When changes are made as TRANSACTIONs, it becomes
 easy to un/re-do them. SQL TRANSACTIONs follow **ACID** properties:
@@ -358,7 +358,8 @@ SELECT first_name
 Because there was an error in the TRANSACTION, the "Johnathan" UPDATEs were
 rolled back.
 
-In the [next post]() we'll cover VIEWs, PRODCEDUREs, and FUNCTIONs.
+In the [next post](https://aeryck.com/post:SQL%20Views%20Procedures%20and%20Functions)
+we'll cover VIEWs, PRODCEDUREs, and FUNCTIONs.
 
 
 \* The database designer can determine what is and is not a valid state. An

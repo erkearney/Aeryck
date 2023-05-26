@@ -10,6 +10,7 @@ will be split into four key sections:
 ### [Primary and Foreign Keys](https://aeryck.com/post:SQL Primary and Foreign Keys)
 ### [Transactions and ACID properties](https://aeryck.com/post:SQL%20Transactions%20and%20ACID%20properties)
 ### [Views Procedures and Functions](https://aeryck.com/post:SQL Views Procedures and Functions)
+### [Exercises)](https://aeryck.com/post:SQL Views Procedures and Functions)
 
 
 [Other tutorials](https://www.postgresqltutorial.com/) will typically start by
